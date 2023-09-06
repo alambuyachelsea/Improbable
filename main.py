@@ -28,6 +28,12 @@ def generation_area():
     return (print("generation area"))
 
 
+# Goes back to user profile area
+def user_profile():
+    return (print("user profile area"))
+
+
+# 10 rows and 5 columns
 # Nav bar area
 nav_frame = tk.Frame(app_body, width=400, height=70)
 nav_frame.config(bg="#5B6565")
@@ -36,17 +42,30 @@ nav_frame.grid_propagate(False)
 nav_frame.grid_columnconfigure(0, weight=1)
 nav_frame.grid_rowconfigure(0, weight=1)
 
+# Empty grid cell
+empty_cell = tk.Label(nav_frame, text='empty', bg='#5B6565')
+
 # Nav bar buttons
 generation_area_img = tk.PhotoImage(file='Improbable/assets/lock-icon.png')
 generation_area_button = tk.Button(nav_frame,
-                                   command=generation_area,
+                                   command=user_profile,
                                    image=generation_area_img)
-generation_area_button.grid(row=0, column=0)
 generation_area_button.config(bg="#5B6565", bd=0)
+
+user_profile_img = tk.PhotoImage(file='Improbable/assets/user-icon.png')
+user_profile_button = tk.Button(nav_frame,
+                                command=user_profile,
+                                image=user_profile_img)
+user_profile_button.config(bg="#5B6565", bd=0)
+
+# Row 1 nav bar buttons
+empty_cell.grid(column=0, row=0)
+generation_area_button.grid(column=1, row=0)
+#empty_cell.grid(column=2, row=0)
+user_profile_button.grid(column=3, row=0)
 
 # Main scene area
 body_frame = tk.Frame(app_body, width=400, height=530)
-# body_frame.config(bg="#D9D9D9")
 body_frame.config(bg="#D9D9D9")
 body_frame.grid(row=1, column=0, padx=0, pady=0)
 body_frame.grid_propagate(False)
